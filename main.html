@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Functions</title>
+  </head>
+  <body>
+    <script>
+      // Função para verificar se um número pertence à sequência de Fibonacci
+      function fibonacci(n) {
+        let fib = [0, 1];
+        if (n === 0 || n === 1) {
+          return true;
+        }
+        for (let i = 2; fib[i - 1] <= n; i++) {
+          fib[i] = fib[i - 1] + fib[i - 2];
+          if (fib[i] === n) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      // Função para verificar a presença de letras 'A' e contar sua ocorrência
+      function verifyString(str) {
+        let countA = 0;
+        for (let i = 0; i < str.length; i++) {
+          if (str[i] === "A" || str[i] === "a") {
+            countA++;
+          }
+        }
+        return { hasLetterA: countA > 0, countA: countA };
+      }
+
+      // Função para calcular a soma de 1 até o valor de index
+      function calculateSumary(index) {
+        let k = 0;
+        let sum = 0;
+        while (k <= index) {
+          k++;
+          sum += k;
+        }
+        return sum;
+      }
+
+      // Função principal para ler valores e imprimir resultados
+      function main() {
+        // Leitura do número para a função fibonacci
+        const num = parseInt(
+          prompt(
+            "Digite um número para verificar se está na sequência de Fibonacci: "
+          )
+        );
+        alert(
+          `O número ${num} ${
+            fibonacci(num) ? "pertence" : "não pertence"
+          } à sequência de Fibonacci.`
+        );
+
+        // Leitura da string para a função verifyString
+        const str = prompt(
+          "Digite uma string para verificar a presença da letra A: "
+        );
+        const result = verifyString(str);
+        alert(
+          `A string ${result.hasLetterA ? "contém" : "não contém"} a letra A.`
+        );
+        alert(`Número de ocorrências da letra A: ${result.countA}`);
+
+        // Leitura do índice para a função calculateSumary
+        const index = parseInt(
+          prompt(
+            "Digite um índice para calcular a soma de 1 até o valor do índice: "
+          )
+        );
+        alert(`A soma de 1 até ${index} é ${calculateSumary(index)}.`);
+      }
+
+      // Executa a função principal quando a página é carregada
+      main();
+    </script>
+  </body>
+</html>
